@@ -721,67 +721,280 @@ topics:      /diagnostics                                                       
 
 Depth topic echo: 
 ```
-
+$ rostopic echo /zed2/zed_node/depth/depth_registered
+header: 
+  seq: 0
+  stamp: 
+    secs: 1735281348
+    nsecs: 908521465
+  frame_id: "zed2_left_camera_optical_frame"
+height: 360
+width: 640
+encoding: "32FC1"
+is_bigendian: 0
+step: 2560
+data: [255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255,..]
 ```
 
 Depth camera info topic echo:
 ```
-
-```
-
-Depth info topic echo:
-```
-
+$ rostopic echo /zed2/zed_node/depth/camera_info
+header: 
+  seq: 4
+  stamp: 
+    secs: 1735281502
+    nsecs: 250405465
+  frame_id: "zed2_left_camera_optical_frame"
+height: 360
+width: 640
+distortion_model: "plumb_bob"
+D: [0.0, 0.0, 0.0, 0.0, 0.0]
+K: [261.0508728027344, 0.0, 316.148193359375, 0.0, 261.0508728027344, 181.02622985839844, 0.0, 0.0, 1.0]
+R: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+P: [261.0508728027344, 0.0, 316.148193359375, 0.0, 0.0, 261.0508728027344, 181.02622985839844, 0.0, 0.0, 0.0, 1.0, 0.0]
+binning_x: 0
+binning_y: 0
+roi: 
+  x_offset: 0
+  y_offset: 0
+  height: 0
+  width: 0
+  do_rectify: False
 ```
 
 IMU data info topic echo:
 ```
-
+$ rostopic echo /zed2/zed_node/imu/data
+header: 
+  seq: 0
+  stamp: 
+    secs: 1735279660
+    nsecs: 542892147
+  frame_id: "zed2_imu_link"
+orientation: 
+  x: 0.0019067992689087987
+  y: 0.01964346133172512
+  z: -0.0008004685514606535
+  w: 0.9998049139976501
+orientation_covariance: [3.508294485066751e-10, 2.5143494870309872e-11, 5.7391818264666e-12, 2.514349703474694e-11, 6.3874578311802315e-09, 4.385051083941749e-13, 5.739183990903668e-12, 4.385046011042373e-13, 3.420512536438746e-10]
+angular_velocity: 
+  x: -0.0001717870612978656
+  y: 6.668106762208743e-05
+  z: -0.0005567486654310972
+angular_velocity_covariance: [6.623836107184411e-10, 0.0, 0.0, 0.0, 5.743454273726701e-10, 0.0, 0.0, -0.0, 5.877751533323972e-10]
+linear_acceleration: 
+  x: -0.37852194905281067
+  y: 0.041714418679475784
+  z: 9.770483016967773
+linear_acceleration_covariance: [0.007800576277077198, 0.0, 0.0, 0.0, 0.00585215026512742, 0.0, 0.0, -0.0, 0.008417878299951553]
 ```
 
 Left camera topic echo:
 ```
-
+$ rostopic echo /zed2/zed_node/left/image_rect_color
+header: 
+  seq: 4
+  stamp: 
+    secs: 1735278948
+    nsecs: 606446465
+  frame_id: "zed2_left_camera_optical_frame"
+height: 360
+width: 640
+encoding: "bgra8"
+is_bigendian: 0
+step: 2560
+data: [61, 34, 41, 255, 61, 36, 43, 255, 63, 37, 43, 255, 64, 40, 43, 255...]
 ```
 
 Left camera info topic echo:
 ```
-
+$ rostopic echo -n1 /zed2/zed_node/left/camera_info
+header: 
+  seq: 8
+  stamp: 
+    secs: 1735279367
+    nsecs: 629950465
+  frame_id: "zed2_left_camera_optical_frame"
+height: 360
+width: 640
+distortion_model: "plumb_bob"
+D: [0.0, 0.0, 0.0, 0.0, 0.0]
+K: [261.0508728027344, 0.0, 316.148193359375, 0.0, 261.0508728027344, 181.02622985839844, 0.0, 0.0, 1.0]
+R: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+P: [261.0508728027344, 0.0, 316.148193359375, 0.0, 0.0, 261.0508728027344, 181.02622985839844, 0.0, 0.0, 0.0, 1.0, 0.0]
+binning_x: 0
+binning_y: 0
+roi: 
+  x_offset: 0
+  y_offset: 0
+  height: 0
+  width: 0
+  do_rectify: False
 ```
 
 RGB camera topic echo:
 ```
-
+$ rostopic echo /zed2/zed_node/rgb/image_rect_color
+header: 
+  seq: 0
+  stamp: 
+    secs: 1735278805
+    nsecs: 864969465
+  frame_id: "zed2_left_camera_optical_frame"
+height: 360
+width: 640
+encoding: "bgra8"
+is_bigendian: 0
+step: 2560
+data: [53, 32, 37, 255, 62, 37, 44, 255, 62, 36, 43, 255, 63, 33, 39, 255, 63, 34, 40, 255,..]
 ```
 
 RGB camera info topic echo:
 ```
-
+$ rostopic echo /zed2/zed_node/rgb/camera_info
+header: 
+  seq: 3
+  stamp: 
+    secs: 1735279113
+    nsecs: 582182465
+  frame_id: "zed2_left_camera_optical_frame"
+height: 360
+width: 640
+distortion_model: "plumb_bob"
+D: [0.0, 0.0, 0.0, 0.0, 0.0]
+K: [261.0508728027344, 0.0, 316.148193359375, 0.0, 261.0508728027344, 181.02622985839844, 0.0, 0.0, 1.0]
+R: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+P: [261.0508728027344, 0.0, 316.148193359375, 0.0, 0.0, 261.0508728027344, 181.02622985839844, 0.0, 0.0, 0.0, 1.0, 0.0]
+binning_x: 0
+binning_y: 0
+roi: 
+  x_offset: 0
+  y_offset: 0
+  height: 0
+  width: 0
+  do_rectify: False
 ```
 
 Right camera topic echo:
 ```
-
+$ rostopic echo /zed2/zed_node/right/image_rect_color
+header: 
+  seq: 0
+  stamp: 
+    secs: 1735279015
+    nsecs: 576962465
+  frame_id: "zed2_right_camera_optical_frame"
+height: 360
+width: 640
+encoding: "bgra8"
+is_bigendian: 0
+step: 2560
+data: [9, 22, 24, 255, 11, 22, 26, 255, 13, 24, 28, 255, 11, 23, 25, 255,..]
 ```
 
 Right camera info topic echo:
 ```
-
+$ rostopic echo /zed2/zed_node/right/camera_info
+header: 
+  seq: 5
+  stamp: 
+    secs: 1735279269
+    nsecs: 590939465
+  frame_id: "zed2_right_camera_optical_frame"
+height: 360
+width: 640
+distortion_model: "plumb_bob"
+D: [0.0, 0.0, 0.0, 0.0, 0.0]
+K: [261.0508728027344, 0.0, 316.148193359375, 0.0, 261.0508728027344, 181.02622985839844, 0.0, 0.0, 1.0]
+R: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+P: [261.0508728027344, 0.0, 316.148193359375, -31.317344665527344, 0.0, 261.0508728027344, 181.02622985839844, 0.0, 0.0, 0.0, 1.0, 0.0]
+binning_x: 0
+binning_y: 0
+roi: 
+  x_offset: 0
+  y_offset: 0
+  height: 0
+  width: 0
+  do_rectify: False
 ```
 
 Odometry topic echo:
 ```
-
+$ rostopic echo /zed2/zed_node/odom
+header: 
+  seq: 0
+  stamp: 
+    secs: 1735279500
+    nsecs: 570706465
+  frame_id: "odom"
+child_frame_id: "base_link"
+pose: 
+  pose: 
+    position: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    orientation: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  covariance: [1.000000013351432e-10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.000000013351432e-10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.000000013351432e-10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.000000013351432e-10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.000000013351432e-10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.000000013351432e-10]
+twist: 
+  twist: 
+    linear: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  covariance: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 ```
 
 Pose topic echo:
 ```
-
+$ rostopic echo /zed2/zed_node/pose
+header: 
+  seq: 0
+  stamp: 
+    secs: 1735279462
+    nsecs:  68683465
+  frame_id: "map"
+pose: 
+  position: 
+    x: -0.009993596057798843
+    y: 0.059998770635863764
+    z: 0.015500830393179694
+  orientation: 
+    x: 0.0026877267207852337
+    y: 0.019631320670887617
+    z: -0.00013449843675467787
+    w: 0.999803665368337
 ```
 
 Pose with covariance topic echo:
 ```
-
+$ rostopic echo /zed2/zed_node/pose_with_covariance
+header: 
+  seq: 0
+  stamp: 
+    secs: 1735279595
+    nsecs: 476123465
+  frame_id: "map"
+pose: 
+  pose: 
+    position: 
+      x: -0.009993596057798843
+      y: 0.059998770635863764
+      z: 0.015500830393179694
+    orientation: 
+      x: 0.0026877267207852337
+      y: 0.019631320670887617
+      z: -0.00013449843675467787
+      w: 0.999803665368337
+  covariance: [1.000000013351432e-10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.000000013351432e-10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.000000013351432e-10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.000000013351432e-10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.000000013351432e-10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.000000013351432e-10]
 ```
 
 ### Rviz visualization
@@ -1114,6 +1327,7 @@ $ ros2 topic list
 ```
 Additional topics coming from zed2 (different from zedm):
 ```
+/zed/zed_node/depth/depth_info
 /zed/zed_node/atm_press
 /zed/zed_node/imu/mag
 /zed/zed_node/temperature/imu
