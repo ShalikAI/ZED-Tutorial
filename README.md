@@ -2037,6 +2037,212 @@ twist:
   - 0.0
 ```
 
+TF topic echo:
+```
+$ ros2 topic echo /tf
+transforms:
+- header:
+    stamp:
+      sec: 1735282353
+      nanosec: 65259225
+    frame_id: odom
+  child_frame_id: zed_camera_link
+  transform:
+    translation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    rotation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+---
+transforms:
+- header:
+    stamp:
+      sec: 1735282353
+      nanosec: 65259225
+    frame_id: map
+  child_frame_id: odom
+  transform:
+    translation:
+      x: -6.447698225248155e-06
+      y: -9.489409711072039e-07
+      z: -5.630725508007361e-07
+    rotation:
+      x: 0.002790777155081556
+      y: -0.005017017650249147
+      z: -6.978396780946552e-05
+      w: 0.9999835179776543
+---
+transforms:
+- header:
+    stamp:
+      sec: 1735282353
+      nanosec: 103295809
+    frame_id: zed_left_camera_frame
+  child_frame_id: zed_imu_link
+  transform:
+    translation:
+      x: -0.0020000000949949026
+      y: -0.023061001673340797
+      z: 0.00021700002253055573
+    rotation:
+      x: -0.0005459150415845215
+      y: 0.0014597486006096005
+      z: -0.0019339574500918388
+      w: 0.9999969005584717
+```
+TF static topic echo:
+```
+$ ros2 topic echo /tf_static
+transforms:
+- header:
+    stamp:
+      sec: 1735282772
+      nanosec: 835417536
+    frame_id: zed_camera_center
+  child_frame_id: zed_baro_link
+  transform:
+    translation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    rotation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+- header:
+    stamp:
+      sec: 1735282772
+      nanosec: 835423212
+    frame_id: zed_camera_link
+  child_frame_id: zed_camera_center
+  transform:
+    translation:
+      x: 0.0
+      y: 0.0
+      z: 0.015
+    rotation:
+      x: 0.0
+      y: 0.024997395914712332
+      z: 0.0
+      w: 0.9996875162757025
+- header:
+    stamp:
+      sec: 1735282772
+      nanosec: 835423865
+    frame_id: zed_camera_center
+  child_frame_id: zed_left_camera_frame
+  transform:
+    translation:
+      x: -0.01
+      y: 0.06
+      z: 0.0
+    rotation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+- header:
+    stamp:
+      sec: 1735282772
+      nanosec: 835424467
+    frame_id: zed_left_camera_frame
+  child_frame_id: zed_left_camera_optical_frame
+  transform:
+    translation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    rotation:
+      x: 0.5
+      y: -0.4999999999999999
+      z: 0.5
+      w: -0.5000000000000001
+- header:
+    stamp:
+      sec: 1735282772
+      nanosec: 835425039
+    frame_id: zed_camera_center
+  child_frame_id: zed_mag_link
+  transform:
+    translation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    rotation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+- header:
+    stamp:
+      sec: 1735282772
+      nanosec: 835426086
+    frame_id: zed_camera_center
+  child_frame_id: zed_right_camera_frame
+  transform:
+    translation:
+      x: -0.01
+      y: -0.06
+      z: 0.0
+    rotation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+- header:
+    stamp:
+      sec: 1735282772
+      nanosec: 835426817
+    frame_id: zed_right_camera_frame
+  child_frame_id: zed_right_camera_optical_frame
+  transform:
+    translation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    rotation:
+      x: 0.5
+      y: -0.4999999999999999
+      z: 0.5
+      w: -0.5000000000000001
+- header:
+    stamp:
+      sec: 1735282772
+      nanosec: 835427290
+    frame_id: zed_left_camera_frame
+  child_frame_id: zed_temp_left_link
+  transform:
+    translation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    rotation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+- header:
+    stamp:
+      sec: 1735282772
+      nanosec: 835427703
+    frame_id: zed_right_camera_frame
+  child_frame_id: zed_temp_right_link
+  transform:
+    translation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    rotation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+```
 Pose topic echo:
 ```
 $ ros2 topic echo /zed/zed_node/pose
