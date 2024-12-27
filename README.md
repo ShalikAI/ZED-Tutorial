@@ -717,6 +717,73 @@ topics:      /diagnostics                                                       
              /zed2/zed_node/temperature/left                                                     178 msgs    : sensor_msgs/Temperature                
              /zed2/zed_node/temperature/right                                                    178 msgs    : sensor_msgs/Temperature
 ```
+### Echo ZED ROS1 topics
+
+Depth topic echo: 
+```
+
+```
+
+Depth camera info topic echo:
+```
+
+```
+
+Depth info topic echo:
+```
+
+```
+
+IMU data info topic echo:
+```
+
+```
+
+Left camera topic echo:
+```
+
+```
+
+Left camera info topic echo:
+```
+
+```
+
+RGB camera topic echo:
+```
+
+```
+
+RGB camera info topic echo:
+```
+
+```
+
+Right camera topic echo:
+```
+
+```
+
+Right camera info topic echo:
+```
+
+```
+
+Odometry topic echo:
+```
+
+```
+
+Pose topic echo:
+```
+
+```
+
+Pose with covariance topic echo:
+```
+
+```
+
 ### Rviz visualization
 Example launch files to start a pre-configured Rviz environment to visualize the data of ZED, ZED Mini, ZED 2, ZED X, and ZED X Mini cameras are provided in the [`zed-ros-examples` repository](https://github.com/stereolabs/zed-ros-examples/tree/master/zed_display_rviz)
     
