@@ -1781,7 +1781,7 @@ data:
 - 255
 ```
 
-RGB camera info topic:
+RGB camera info topic echo:
 ```
 $ ros2 topic echo /zed/zed_node/rgb/camera_info
 header:
