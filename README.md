@@ -773,7 +773,7 @@ A few tutorials are provided to understand how to use the ZED node in the ROS en
  - [Sensors data subscription tutorial](https://github.com/stereolabs/zed-ros-examples/blob/master/tutorials/zed_sensors_sub_tutorial/README.md) 
  - [Object detection subscription tutorial](https://github.com/stereolabs/zed-ros-examples/blob/master/tutorials/zed_obj_det_sub_tutorial/README.md) 
 
-## Stereolabs ZED Camera - ROS Interfaces
+## ROS Interfaces
 
 The `zed-ros-interfaces` repository install the `zed_interfaces` ROS package which defines the custom topics, services and actions used by the [ZED ROS Wrapper](https://github.com/stereolabs/zed-ros-wrapper) to interface with ROS.
 
