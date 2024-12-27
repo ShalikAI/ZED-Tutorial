@@ -2,7 +2,7 @@
 This repository is all about zed and it's implementation in my PhD.
 
 # System Requirements
-For this demo, we are using Ubuntu 20.04 / 22.04, ROS2 (ROS Humble), Nvidia Driver 535, Cuda 12.1 and ZED SDK 4.1.4 (pyzed-4.1) and python 3.10. 
+For this demo, we are using Ubuntu 20.04 / 22.04, ROS1 (ROS Noetic) / ROS2 (ROS Humble), Nvidia Driver 535, Cuda 12.1 and ZED SDK 4.1.4 (pyzed-4.1) and python 3.10. 
 
 # ZED Camera SDK Installation:
 Download the Latest SDK version from the site: https://www.stereolabs.com/developers/release/.
