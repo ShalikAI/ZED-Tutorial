@@ -491,47 +491,232 @@ The zed_ros_wrapper is a catkin package. It depends on the following ROS package
 - zed_interfaces
 
 Open a terminal, clone the repository, update the dependencies and build the packages:
-
-    $ cd ~/zed_ros1_ws/src
-    $ git clone --recursive https://github.com/stereolabs/zed-ros-wrapper.git
-    $ git clone https://github.com/stereolabs/zed-ros-interfaces.git
-    $ cd ../
-    $ rosdep install --from-paths src --ignore-src -r -y
-    $ catkin_make -DCMAKE_BUILD_TYPE=Release
-    $ source ./devel/setup.bash
-
+```
+$ cd ~/zed_ros1_ws/src
+$ git clone --recursive https://github.com/stereolabs/zed-ros-wrapper.git
+$ git clone https://github.com/stereolabs/zed-ros-interfaces.git
+$ cd ../
+$ rosdep install --from-paths src --ignore-src -r -y
+$ catkin_make -DCMAKE_BUILD_TYPE=Release
+$ source ./devel/setup.bash
+```
 ### Run the ZED wrapper
 
-To launch the ZED node use
+To launch the ZED node for ZED2 camera:
+```
+$ roslaunch zed_wrapper zed2.launch
+```
+For other cameras, use `zedm`, `zed`, `zed2i`, `zedx`, `zedxm`. To select the camera from its serial number:
+```
+$ roslaunch zed_wrapper zed.launch serial_number:=1010 #replace 1010 with the actual SN
+```
 
-ZED camera:
+### Replay ZED ROS topics from a rosbag
 
-    $ roslaunch zed_wrapper zed.launch
-   
-ZED Mini camera:
+If you want to replay the rosbag (at default rate, r=1):
+```bash
+$ rosbag play zed_ros_topics.bag -r 1
+```
 
-    $ roslaunch zed_wrapper zedm.launch
-   
-ZED 2 camera:
-
-    $ roslaunch zed_wrapper zed2.launch
-
-ZED 2i camera:
-
-    $ roslaunch zed_wrapper zed2i.launch
-
-ZED X camera:
-
-    $ roslaunch zed_wrapper zedx.launch  
-
-ZED X Mini camera:
-
-    $ roslaunch zed_wrapper zedxm.launch  
-
-To select the camera from its serial number:
- 
-     $ roslaunch zed_wrapper zed.launch serial_number:=1010 #replace 1010 with the actual SN
-
+If you want to query the info of the rosbag:
+```
+$ rosbag info zed_ros_topics.bag 
+path:        rosbag_record_2024-12-26-21-43-57.bag
+version:     2.0
+duration:    7.4s
+start:       Dec 26 2024 21:43:58.03 (1735271038.03)
+end:         Dec 26 2024 21:44:05.39 (1735271045.39)
+size:        867.1 MB
+messages:    10497
+compression: none [606/606 chunks]
+types:       diagnostic_msgs/DiagnosticArray         [60810da900de1dd6ddd437c3503511da]
+             dynamic_reconfigure/Config              [958f16a05573709014982821e6822580]
+             dynamic_reconfigure/ConfigDescription   [757ce9d44ba8ddd801bb30bc456f946f]
+             geometry_msgs/PoseStamped               [d3812c3cbc69362b77dc0b19b345f8f5]
+             geometry_msgs/PoseWithCovarianceStamped [953b798c0f514ff060a53a3498ce6246]
+             geometry_msgs/Transform                 [ac9eff44abf714214112b05d54a3cf9b]
+             nav_msgs/Odometry                       [cd5e73d190d741a2f92e81eda573aca7]
+             nav_msgs/Path                           [6227e2b7e9cce15051f669a5e197bbf7]
+             rosgraph_msgs/Log                       [acffd30cd6b6de30f120938c17c593fb]
+             sensor_msgs/CameraInfo                  [c9a58c1b0b154e0e6da7578cb991d214]
+             sensor_msgs/CompressedImage             [8f7a12909da2c9d3332d540a0977563f]
+             sensor_msgs/FluidPressure               [804dc5cea1c5306d6a2eb80b9833befe]
+             sensor_msgs/Image                       [060021388200f6f0f447d0fcd9c64743]
+             sensor_msgs/Imu                         [6a62c6daae103f4ff57a132d6f95cec2]
+             sensor_msgs/MagneticField               [2f3b0b43eed0c9501de0fa3ff89a45aa]
+             sensor_msgs/PointCloud2                 [1158d486dd51d683ce2f1be655c3c181]
+             sensor_msgs/Temperature                 [ff71b307acdbe7c871a5a6d7ed359100]
+             stereo_msgs/DisparityImage              [04a177815f75271039fa21f16acad8c9]
+             tf2_msgs/TFMessage                      [94810edda583a504dfda3829e70d7eec]
+             theora_image_transport/Packet           [33ac4e14a7cff32e7e0d65f18bb410f3]
+             zed_interfaces/PosTrackStatus           [16c87ef5951f2667d385cacb152a0d50]
+topics:      /diagnostics                                                                          7 msgs    : diagnostic_msgs/DiagnosticArray        
+             /rosout                                                                             922 msgs    : rosgraph_msgs/Log                       (2 connections)
+             /rosout_agg                                                                         822 msgs    : rosgraph_msgs/Log                      
+             /tf                                                                                 106 msgs    : tf2_msgs/TFMessage                     
+             /tf_static                                                                            2 msgs    : tf2_msgs/TFMessage                      (2 connections)
+             /zed2/zed_node/atm_press                                                            178 msgs    : sensor_msgs/FluidPressure              
+             /zed2/zed_node/confidence/confidence_map                                             51 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/depth/camera_info                                                     51 msgs    : sensor_msgs/CameraInfo                 
+             /zed2/zed_node/depth/depth_registered                                                51 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/depth/depth_registered/compressed/parameter_descriptions               1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/depth/depth_registered/compressed/parameter_updates                    1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/depth/depth_registered/compressedDepth                                51 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/depth/depth_registered/compressedDepth/parameter_descriptions          1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/depth/depth_registered/compressedDepth/parameter_updates               1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/depth/depth_registered/theora                                          3 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/depth/depth_registered/theora/parameter_descriptions                   1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/depth/depth_registered/theora/parameter_updates                        1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/disparity/disparity_image                                             51 msgs    : stereo_msgs/DisparityImage             
+             /zed2/zed_node/imu/data                                                            1422 msgs    : sensor_msgs/Imu                        
+             /zed2/zed_node/imu/data_raw                                                        1421 msgs    : sensor_msgs/Imu                        
+             /zed2/zed_node/imu/mag                                                              355 msgs    : sensor_msgs/MagneticField              
+             /zed2/zed_node/left/camera_info                                                      88 msgs    : sensor_msgs/CameraInfo                 
+             /zed2/zed_node/left/image_rect_color                                                 44 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/left/image_rect_color/compressed                                      44 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/left/image_rect_color/compressed/parameter_descriptions                1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/left/image_rect_color/compressed/parameter_updates                     1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/left/image_rect_color/compressedDepth/parameter_descriptions           1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/left/image_rect_color/compressedDepth/parameter_updates                1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/left/image_rect_color/theora                                          47 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/left/image_rect_color/theora/parameter_descriptions                    1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/left/image_rect_color/theora/parameter_updates                         1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/left/image_rect_gray                                                  54 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/left/image_rect_gray/compressed                                       54 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/left/image_rect_gray/compressed/parameter_descriptions                 1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/left/image_rect_gray/compressed/parameter_updates                      1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/left/image_rect_gray/compressedDepth/parameter_descriptions            1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/left/image_rect_gray/compressedDepth/parameter_updates                 1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/left/image_rect_gray/theora                                           57 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/left/image_rect_gray/theora/parameter_descriptions                     1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/left/image_rect_gray/theora/parameter_updates                          1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/left_cam_imu_transform                                                 1 msg     : geometry_msgs/Transform                
+             /zed2/zed_node/left_raw/camera_info                                                 106 msgs    : sensor_msgs/CameraInfo                 
+             /zed2/zed_node/left_raw/image_raw_color                                              45 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/left_raw/image_raw_color/compressed                                   45 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/left_raw/image_raw_color/compressed/parameter_descriptions             1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/left_raw/image_raw_color/compressed/parameter_updates                  1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/left_raw/image_raw_color/compressedDepth/parameter_descriptions        1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/left_raw/image_raw_color/compressedDepth/parameter_updates             1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/left_raw/image_raw_color/theora                                       48 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/left_raw/image_raw_color/theora/parameter_descriptions                 1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/left_raw/image_raw_color/theora/parameter_updates                      1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/left_raw/image_raw_gray                                               53 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/left_raw/image_raw_gray/compressed                                    53 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/left_raw/image_raw_gray/compressed/parameter_descriptions              1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/left_raw/image_raw_gray/compressed/parameter_updates                   1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/left_raw/image_raw_gray/compressedDepth/parameter_descriptions         1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/left_raw/image_raw_gray/compressedDepth/parameter_updates              1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/left_raw/image_raw_gray/theora                                        56 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/left_raw/image_raw_gray/theora/parameter_descriptions                  1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/left_raw/image_raw_gray/theora/parameter_updates                       1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/odom                                                                  52 msgs    : nav_msgs/Odometry                      
+             /zed2/zed_node/parameter_descriptions                                                 1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/parameter_updates                                                     12 msgs    : dynamic_reconfigure/Config             
+             /zed2/zed_node/path_map                                                              14 msgs    : nav_msgs/Path                          
+             /zed2/zed_node/path_odom                                                             14 msgs    : nav_msgs/Path                          
+             /zed2/zed_node/point_cloud/cloud_registered                                          51 msgs    : sensor_msgs/PointCloud2                
+             /zed2/zed_node/pose                                                                  52 msgs    : geometry_msgs/PoseStamped              
+             /zed2/zed_node/pose/status                                                          104 msgs    : zed_interfaces/PosTrackStatus          
+             /zed2/zed_node/pose_with_covariance                                                  52 msgs    : geometry_msgs/PoseWithCovarianceStamped
+             /zed2/zed_node/rgb/camera_info                                                      107 msgs    : sensor_msgs/CameraInfo                 
+             /zed2/zed_node/rgb/image_rect_color                                                  54 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/rgb/image_rect_color/compressed                                       54 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/rgb/image_rect_color/compressed/parameter_descriptions                 1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/rgb/image_rect_color/compressed/parameter_updates                      1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/rgb/image_rect_color/compressedDepth/parameter_descriptions            1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/rgb/image_rect_color/compressedDepth/parameter_updates                 1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/rgb/image_rect_color/theora                                           57 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/rgb/image_rect_color/theora/parameter_descriptions                     1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/rgb/image_rect_color/theora/parameter_updates                          1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/rgb/image_rect_gray                                                   54 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/rgb/image_rect_gray/compressed                                        54 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/rgb/image_rect_gray/compressed/parameter_descriptions                  1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/rgb/image_rect_gray/compressed/parameter_updates                       1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/rgb/image_rect_gray/compressedDepth/parameter_descriptions             1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/rgb/image_rect_gray/compressedDepth/parameter_updates                  1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/rgb/image_rect_gray/theora                                            56 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/rgb/image_rect_gray/theora/parameter_descriptions                      1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/rgb/image_rect_gray/theora/parameter_updates                           1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/rgb_raw/camera_info                                                   84 msgs    : sensor_msgs/CameraInfo                 
+             /zed2/zed_node/rgb_raw/image_raw_color                                               42 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/rgb_raw/image_raw_color/compressed                                    53 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/rgb_raw/image_raw_color/compressed/parameter_descriptions              1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/rgb_raw/image_raw_color/compressed/parameter_updates                   1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/rgb_raw/image_raw_color/compressedDepth/parameter_descriptions         1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/rgb_raw/image_raw_color/compressedDepth/parameter_updates              1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/rgb_raw/image_raw_color/theora                                        47 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/rgb_raw/image_raw_color/theora/parameter_descriptions                  1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/rgb_raw/image_raw_color/theora/parameter_updates                       1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/rgb_raw/image_raw_gray                                                53 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/rgb_raw/image_raw_gray/compressed                                     53 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/rgb_raw/image_raw_gray/compressed/parameter_descriptions               1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/rgb_raw/image_raw_gray/compressed/parameter_updates                    1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/rgb_raw/image_raw_gray/compressedDepth/parameter_descriptions          1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/rgb_raw/image_raw_gray/compressedDepth/parameter_updates               1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/rgb_raw/image_raw_gray/theora                                         56 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/rgb_raw/image_raw_gray/theora/parameter_descriptions                   1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/rgb_raw/image_raw_gray/theora/parameter_updates                        1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/right/camera_info                                                    106 msgs    : sensor_msgs/CameraInfo                 
+             /zed2/zed_node/right/image_rect_color                                                53 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/right/image_rect_color/compressed                                     53 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/right/image_rect_color/compressed/parameter_descriptions               1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/right/image_rect_color/compressed/parameter_updates                    1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/right/image_rect_color/compressedDepth/parameter_descriptions          1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/right/image_rect_color/compressedDepth/parameter_updates               1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/right/image_rect_color/theora                                         56 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/right/image_rect_color/theora/parameter_descriptions                   1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/right/image_rect_color/theora/parameter_updates                        1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/right/image_rect_gray                                                 52 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/right/image_rect_gray/compressed                                      52 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/right/image_rect_gray/compressed/parameter_descriptions                1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/right/image_rect_gray/compressed/parameter_updates                     1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/right/image_rect_gray/compressedDepth/parameter_descriptions           1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/right/image_rect_gray/compressedDepth/parameter_updates                1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/right/image_rect_gray/theora                                          55 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/right/image_rect_gray/theora/parameter_descriptions                    1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/right/image_rect_gray/theora/parameter_updates                         1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/right_raw/camera_info                                                106 msgs    : sensor_msgs/CameraInfo                 
+             /zed2/zed_node/right_raw/image_raw_color                                             53 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/right_raw/image_raw_color/compressed                                  53 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/right_raw/image_raw_color/compressed/parameter_descriptions            1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/right_raw/image_raw_color/compressed/parameter_updates                 1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/right_raw/image_raw_color/compressedDepth/parameter_descriptions       1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/right_raw/image_raw_color/compressedDepth/parameter_updates            1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/right_raw/image_raw_color/theora                                      56 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/right_raw/image_raw_color/theora/parameter_descriptions                1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/right_raw/image_raw_color/theora/parameter_updates                     1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/right_raw/image_raw_gray                                              52 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/right_raw/image_raw_gray/compressed                                   52 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/right_raw/image_raw_gray/compressed/parameter_descriptions             1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/right_raw/image_raw_gray/compressed/parameter_updates                  1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/right_raw/image_raw_gray/compressedDepth/parameter_descriptions        1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/right_raw/image_raw_gray/compressedDepth/parameter_updates             1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/right_raw/image_raw_gray/theora                                       55 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/right_raw/image_raw_gray/theora/parameter_descriptions                 1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/right_raw/image_raw_gray/theora/parameter_updates                      1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/stereo/image_rect_color                                               51 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/stereo/image_rect_color/compressed                                    51 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/stereo/image_rect_color/compressed/parameter_descriptions              1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/stereo/image_rect_color/compressed/parameter_updates                   1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/stereo/image_rect_color/compressedDepth/parameter_descriptions         1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/stereo/image_rect_color/compressedDepth/parameter_updates              1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/stereo/image_rect_color/theora                                        54 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/stereo/image_rect_color/theora/parameter_descriptions                  1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/stereo/image_rect_color/theora/parameter_updates                       1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/stereo_raw/image_raw_color                                            51 msgs    : sensor_msgs/Image                      
+             /zed2/zed_node/stereo_raw/image_raw_color/compressed                                 51 msgs    : sensor_msgs/CompressedImage            
+             /zed2/zed_node/stereo_raw/image_raw_color/compressed/parameter_descriptions           1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/stereo_raw/image_raw_color/compressed/parameter_updates                1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/stereo_raw/image_raw_color/compressedDepth/parameter_descriptions      1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/stereo_raw/image_raw_color/compressedDepth/parameter_updates           1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/stereo_raw/image_raw_color/theora                                     54 msgs    : theora_image_transport/Packet          
+             /zed2/zed_node/stereo_raw/image_raw_color/theora/parameter_descriptions               1 msg     : dynamic_reconfigure/ConfigDescription  
+             /zed2/zed_node/stereo_raw/image_raw_color/theora/parameter_updates                    1 msg     : dynamic_reconfigure/Config             
+             /zed2/zed_node/temperature/imu                                                     1421 msgs    : sensor_msgs/Temperature                
+             /zed2/zed_node/temperature/left                                                     178 msgs    : sensor_msgs/Temperature                
+             /zed2/zed_node/temperature/right                                                    178 msgs    : sensor_msgs/Temperature
+```
 ### Rviz visualization
 Example launch files to start a pre-configured Rviz environment to visualize the data of ZED, ZED Mini, ZED 2, ZED X, and ZED X Mini cameras are provided in the [`zed-ros-examples` repository](https://github.com/stereolabs/zed-ros-examples/tree/master/zed_display_rviz)
     
