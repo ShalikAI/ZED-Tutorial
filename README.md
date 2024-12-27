@@ -918,6 +918,255 @@ roi:
   do_rectify: False
 ```
 
+TF topic echo:
+```
+$ rostopic echo /tf
+transforms: 
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1735283536
+        nsecs: 198755292
+      frame_id: "odom"
+    child_frame_id: "base_link"
+    transform: 
+      translation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      rotation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        w: 1.0
+---
+transforms: 
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1735283536
+        nsecs: 198755292
+      frame_id: "map"
+    child_frame_id: "odom"
+    transform: 
+      translation: 
+        x: -0.00999281249476458
+        y: 0.059999058377506
+        z: 0.015500221462002136
+      rotation: 
+        x: 0.0022743462719155513
+        y: 0.019449826117637875
+        z: -0.00011381217288419188
+        w: 0.9998082409441414
+```
+
+TF static topic echo:
+```
+arghya@arghya-Pulse-GL66-12UEK:~/zed_ws$ rostopic echo /tf_static
+transforms: 
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1735283503
+        nsecs: 254296778
+      frame_id: "zed2_camera_center"
+    child_frame_id: "zed2_baro_link"
+    transform: 
+      translation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      rotation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        w: 1.0
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1735283503
+        nsecs: 254300822
+      frame_id: "base_link"
+    child_frame_id: "zed2_base_link"
+    transform: 
+      translation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      rotation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        w: 1.0
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1735283503
+        nsecs: 254301767
+      frame_id: "zed2_base_link"
+    child_frame_id: "zed2_camera_center"
+    transform: 
+      translation: 
+        x: 0.0
+        y: 0.0
+        z: 0.015
+      rotation: 
+        x: 0.0
+        y: 0.024997395914712332
+        z: 0.0
+        w: 0.9996875162757025
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1735283503
+        nsecs: 254302138
+      frame_id: "zed2_camera_center"
+    child_frame_id: "zed2_left_camera_frame"
+    transform: 
+      translation: 
+        x: -0.01
+        y: 0.06
+        z: 0.0
+      rotation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        w: 1.0
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1735283503
+        nsecs: 254302550
+      frame_id: "zed2_left_camera_frame"
+    child_frame_id: "zed2_left_camera_optical_frame"
+    transform: 
+      translation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      rotation: 
+        x: 0.5
+        y: -0.4999999999999999
+        z: 0.5
+        w: -0.5000000000000001
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1735283503
+        nsecs: 254306274
+      frame_id: "zed2_camera_center"
+    child_frame_id: "zed2_mag_link"
+    transform: 
+      translation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      rotation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        w: 1.0
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1735283503
+        nsecs: 254306512
+      frame_id: "zed2_camera_center"
+    child_frame_id: "zed2_right_camera_frame"
+    transform: 
+      translation: 
+        x: -0.01
+        y: -0.06
+        z: 0.0
+      rotation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        w: 1.0
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1735283503
+        nsecs: 254307016
+      frame_id: "zed2_right_camera_frame"
+    child_frame_id: "zed2_right_camera_optical_frame"
+    transform: 
+      translation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      rotation: 
+        x: 0.5
+        y: -0.4999999999999999
+        z: 0.5
+        w: -0.5000000000000001
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1735283503
+        nsecs: 254307411
+      frame_id: "zed2_left_camera_frame"
+    child_frame_id: "zed2_temp_left_link"
+    transform: 
+      translation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      rotation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        w: 1.0
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1735283503
+        nsecs: 254308268
+      frame_id: "zed2_right_camera_frame"
+    child_frame_id: "zed2_temp_right_link"
+    transform: 
+      translation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      rotation: 
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        w: 1.0
+---
+transforms: 
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1735283507
+        nsecs: 257780353
+      frame_id: "zed2_left_camera_frame"
+    child_frame_id: "zed2_imu_link"
+    transform: 
+      translation: 
+        x: -0.0020000000949949026
+        y: -0.023061001673340797
+        z: 0.00021700002253055573
+      rotation: 
+        x: -0.0005459150415845215
+        y: 0.0014597486006096005
+        z: -0.0019339574500918388
+        w: 0.9999969005584717
+```
 Odometry topic echo:
 ```
 $ rostopic echo /zed2/zed_node/odom
