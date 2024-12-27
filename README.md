@@ -988,11 +988,6 @@ data:
 Depth camera info topic echo:
 ```
 $ ros2 topic echo /zed/zed_node/depth/camera_info
-/opt/ros/foxy/bin/ros2:6: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
-  from pkg_resources import load_entry_point
-2024-12-26 19:29:48.108 [XMLPARSER Error] Invalid element found into 'builtinAttributesType'. Name: domainId -> Function getXMLBuiltinAttributes
-2024-12-26 19:29:48.108 [XMLPARSER Error] Error parsing participant profile -> Function parseXMLParticipantProf
-2024-12-26 19:29:48.108 [XMLPARSER Error] Error parsing profile's tag participant -> Function parseProfiles
 header:
   stamp:
     sec: 1735262988
@@ -1068,11 +1063,6 @@ max_depth: 7.9091668128967285
 IMU data info topic echo:
 ```
 $ ros2 topic echo /zed/zed_node/imu/data
-/opt/ros/foxy/bin/ros2:6: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
-  from pkg_resources import load_entry_point
-2024-12-26 19:32:41.443 [XMLPARSER Error] Invalid element found into 'builtinAttributesType'. Name: domainId -> Function getXMLBuiltinAttributes
-2024-12-26 19:32:41.443 [XMLPARSER Error] Error parsing participant profile -> Function parseXMLParticipantProf
-2024-12-26 19:32:41.443 [XMLPARSER Error] Error parsing profile's tag participant -> Function parseProfiles
 header:
   stamp:
     sec: 1735263162
@@ -1154,6 +1144,93 @@ header:
   stamp:
     sec: 1735264140
     nanosec: 272821223
+  frame_id: zed_left_camera_optical_frame
+height: 720
+width: 1280
+distortion_model: rational_polynomial
+d:
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+k:
+- 522.1017456054688
+- 0.0
+- 632.29638671875
+- 0.0
+- 522.1017456054688
+- 362.0524597167969
+- 0.0
+- 0.0
+- 1.0
+r:
+- 1.0
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+p:
+- 522.1017456054688
+- 0.0
+- 632.29638671875
+- 0.0
+- 0.0
+- 522.1017456054688
+- 362.0524597167969
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+- 0.0
+binning_x: 0
+binning_y: 0
+roi:
+  x_offset: 0
+  y_offset: 0
+  height: 0
+  width: 0
+  do_rectify: false
+```
+
+RGB camera topic echo:
+```
+$ ros2 topic echo /zed/zed_node/rgb/image_rect_color
+header:
+  stamp:
+    sec: 1735264721
+    nanosec: 772274223
+  frame_id: zed_left_camera_optical_frame
+height: 720
+width: 1280
+encoding: bgra8
+is_bigendian: 0
+step: 5120
+data:
+- 10
+- 58
+- 79
+- 255
+- 12
+- 61
+- 82
+- 255
+```
+
+RGB camera info topic:
+```
+$ ros2 topic echo /zed/zed_node/rgb/camera_info
+header:
+  stamp:
+    sec: 1735264839
+    nanosec: 279019223
   frame_id: zed_left_camera_optical_frame
 height: 720
 width: 1280
@@ -1402,6 +1479,7 @@ twist:
   - 0.0
   - 0.0
 ```
+
 Pose topic echo:
 ```
 $ ros2 topic echo /zed/zed_node/pose
@@ -1421,6 +1499,7 @@ pose:
     z: -5.568355206051486e-05
     w: 0.9999816732643955
 ```
+
 Pose with covariance topic echo:
 ```
 $ ros2 topic echo /zed/zed_node/pose_with_covariance
