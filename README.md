@@ -917,6 +917,44 @@ roi:
   width: 0
   do_rectify: False
 ```
+PointCloud topic echo:
+```
+$ rostopic echo /zed2/zed_node/point_cloud/cloud_registered
+header: 
+  seq: 5
+  stamp: 
+    secs: 1735285911
+    nsecs: 666465292
+  frame_id: "zed2_left_camera_frame"
+height: 360
+width: 640
+fields: 
+  - 
+    name: "x"
+    offset: 0
+    datatype: 7
+    count: 1
+  - 
+    name: "y"
+    offset: 4
+    datatype: 7
+    count: 1
+  - 
+    name: "z"
+    offset: 8
+    datatype: 7
+    count: 1
+  - 
+    name: "rgb"
+    offset: 12
+    datatype: 7
+    count: 1
+is_bigendian: False
+point_step: 16
+row_step: 10240
+data: [255, 255, 255, 127, 255, 255, 255, 127, 255,..]
+is_dense: False
+```
 
 TF topic echo:
 ```
@@ -2178,6 +2216,51 @@ roi:
   height: 0
   width: 0
   do_rectify: false
+```
+
+PointCloud topic echo:
+```
+$ ros2 topic echo /zed/zed_node/point_cloud/cloud_registered
+header:
+  stamp:
+    sec: 1735286175
+    nanosec: 614932393
+  frame_id: zed_left_camera_frame
+height: 720
+width: 1280
+fields:
+- name: x
+  offset: 0
+  datatype: 7
+  count: 1
+- name: y
+  offset: 4
+  datatype: 7
+  count: 1
+- name: z
+  offset: 8
+  datatype: 7
+  count: 1
+- name: rgb
+  offset: 12
+  datatype: 7
+  count: 1
+is_bigendian: false
+point_step: 16
+row_step: 20480
+data:
+- 255
+- 255
+- 255
+- 127
+- 255
+- 255
+- 255
+- 127
+- 255
+- 127
+- '...'
+is_dense: false
 ```
 
 Odometry topic echo:
