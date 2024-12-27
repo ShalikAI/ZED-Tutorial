@@ -963,13 +963,99 @@ If you want to replay the rosbag (at default rate, r=1):
 ```bash
 ros2 bag play zed_ros2_topics.bag -r 1
 ```
+
 # Echo ZED ROS2 topics
-If you want to echo any topic:
-```bash
-ros2 topic echo /zed/zed_node/depth/depth_info
+Depth topic echo: 
 ```
-Here is the output:
+$ ros2 topic echo /zed/zed_node/depth/depth_registered
+header:
+  stamp:
+    sec: 1735262712
+    nanosec: 658582223
+  frame_id: zed_left_camera_optical_frame
+height: 720
+width: 1280
+encoding: 32FC1
+is_bigendian: 0
+step: 5120
+data:
+- 255
+- 255
+- 255
+- 127
 ```
+
+Depth camera info topic echo:
+```
+$ ros2 topic echo /zed/zed_node/depth/camera_info
+/opt/ros/foxy/bin/ros2:6: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  from pkg_resources import load_entry_point
+2024-12-26 19:29:48.108 [XMLPARSER Error] Invalid element found into 'builtinAttributesType'. Name: domainId -> Function getXMLBuiltinAttributes
+2024-12-26 19:29:48.108 [XMLPARSER Error] Error parsing participant profile -> Function parseXMLParticipantProf
+2024-12-26 19:29:48.108 [XMLPARSER Error] Error parsing profile's tag participant -> Function parseProfiles
+header:
+  stamp:
+    sec: 1735262988
+    nanosec: 641024223
+  frame_id: zed_left_camera_optical_frame
+height: 720
+width: 1280
+distortion_model: rational_polynomial
+d:
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+k:
+- 522.1017456054688
+- 0.0
+- 632.29638671875
+- 0.0
+- 522.1017456054688
+- 362.0524597167969
+- 0.0
+- 0.0
+- 1.0
+r:
+- 1.0
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+p:
+- 522.1017456054688
+- 0.0
+- 632.29638671875
+- 0.0
+- 0.0
+- 522.1017456054688
+- 362.0524597167969
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+- 0.0
+binning_x: 0
+binning_y: 0
+roi:
+  x_offset: 0
+  y_offset: 0
+  height: 0
+  width: 0
+  do_rectify: false
+```
+
+Depth info topic echo:
+```
+$ ros2 topic echo /zed/zed_node/depth/depth_info
 header:
   stamp:
     sec: 0
@@ -977,7 +1063,419 @@ header:
   frame_id: zed_left_camera_optical_frame
 min_depth: 0.6266739368438721
 max_depth: 7.9091668128967285
-
 ```
 
+IMU data info topic echo:
+```
+$ ros2 topic echo /zed/zed_node/imu/data
+/opt/ros/foxy/bin/ros2:6: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  from pkg_resources import load_entry_point
+2024-12-26 19:32:41.443 [XMLPARSER Error] Invalid element found into 'builtinAttributesType'. Name: domainId -> Function getXMLBuiltinAttributes
+2024-12-26 19:32:41.443 [XMLPARSER Error] Error parsing participant profile -> Function parseXMLParticipantProf
+2024-12-26 19:32:41.443 [XMLPARSER Error] Error parsing profile's tag participant -> Function parseProfiles
+header:
+  stamp:
+    sec: 1735263162
+    nanosec: 41508051
+  frame_id: zed_imu_link
+orientation:
+  x: 0.002038976177573204
+  y: 0.01958724670112133
+  z: 0.0013864522334188223
+  w: 0.9998050928115845
+orientation_covariance:
+- 3.507596324246348e-10
+- 1.4403283259251969e-11
+- 5.7892582424538244e-12
+- 1.4403283259251969e-11
+- 4.27705758031462e-09
+- 8.226906248468142e-12
+- 5.789257160235291e-12
+- 8.226905166249608e-12
+- 3.421399782481341e-10
+angular_velocity:
+  x: -0.0012592397357855962
+  y: 0.001456692460137099
+  z: 0.0003174208851875086
+angular_velocity_covariance:
+- 6.623836107184411e-10
+- 0.0
+- 0.0
+- 0.0
+- 5.743454273726701e-10
+- 0.0
+- 0.0
+- -0.0
+- 5.877751533323972e-10
+linear_acceleration:
+  x: -0.35825222730636597
+  y: 0.02272910438477993
+  z: 9.77094554901123
+linear_acceleration_covariance:
+- 0.007800576277077198
+- 0.0
+- 0.0
+- 0.0
+- 0.00585215026512742
+- 0.0
+- 0.0
+- -0.0
+- 0.008417878299951553
+```
+
+Left camera topic echo:
+```
+$ ros2 topic echo /zed/zed_node/left/image_rect_color
+header:
+  stamp:
+    sec: 1735263384
+    nanosec: 29969223
+  frame_id: zed_left_camera_optical_frame
+height: 720
+width: 1280
+encoding: bgra8
+is_bigendian: 0
+step: 5120
+data:
+- 14
+- 60
+- 77
+- 255
+- 16
+- 60
+- 78
+- 255
+```
+
+Left camera info topic:
+```
+$ ros2 topic echo /zed/zed_node/left/camera_info
+header:
+  stamp:
+    sec: 1735264140
+    nanosec: 272821223
+  frame_id: zed_left_camera_optical_frame
+height: 720
+width: 1280
+distortion_model: rational_polynomial
+d:
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+k:
+- 522.1017456054688
+- 0.0
+- 632.29638671875
+- 0.0
+- 522.1017456054688
+- 362.0524597167969
+- 0.0
+- 0.0
+- 1.0
+r:
+- 1.0
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+p:
+- 522.1017456054688
+- 0.0
+- 632.29638671875
+- 0.0
+- 0.0
+- 522.1017456054688
+- 362.0524597167969
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+- 0.0
+binning_x: 0
+binning_y: 0
+roi:
+  x_offset: 0
+  y_offset: 0
+  height: 0
+  width: 0
+  do_rectify: false
+```
+
+Right camera topic echo:
+```
+$ ros2 topic echo /zed/zed_node/right/image_rect_color
+header:
+  stamp:
+    sec: 1735263484
+    nanosec: 135618223
+  frame_id: zed_right_camera_optical_frame
+height: 720
+width: 1280
+encoding: bgra8
+is_bigendian: 0
+step: 5120
+data:
+- 142
+- 173
+- 174
+- 255
+- 140
+- 171
+- 172
+- 255
+```
+
+Right camera info topic echo:
+```
+$ ros2 topic echo /zed/zed_node/right/camera_info
+header:
+  stamp:
+    sec: 1735264284
+    nanosec: 80861223
+  frame_id: zed_right_camera_optical_frame
+height: 720
+width: 1280
+distortion_model: rational_polynomial
+d:
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+k:
+- 522.1017456054688
+- 0.0
+- 632.29638671875
+- 0.0
+- 522.1017456054688
+- 362.0524597167969
+- 0.0
+- 0.0
+- 1.0
+r:
+- 1.0
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+p:
+- 522.1017456054688
+- 0.0
+- 632.29638671875
+- -62.63468933105469
+- 0.0
+- 522.1017456054688
+- 362.0524597167969
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+- 0.0
+binning_x: 0
+binning_y: 0
+roi:
+  x_offset: 0
+  y_offset: 0
+  height: 0
+  width: 0
+  do_rectify: false
+```
+
+Odometry topic echo:
+```
+$ ros2 topic echo /zed/zed_node/odom
+header:
+  stamp:
+    sec: 1735263581
+    nanosec: 407536223
+  frame_id: odom
+child_frame_id: zed_camera_link
+pose:
+  pose:
+    position:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  covariance:
+  - 1.000000013351432e-10
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.000000013351432e-10
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.000000013351432e-10
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.000000013351432e-10
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.000000013351432e-10
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.000000013351432e-10
+twist:
+  twist:
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  covariance:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+```
+Pose topic echo:
+```
+$ ros2 topic echo /zed/zed_node/pose
+header:
+  stamp:
+    sec: 1735263835
+    nanosec: 22263223
+  frame_id: map
+pose:
+  position:
+    x: -5.217121462012392e-06
+    y: -1.0152986544623155e-06
+    z: 5.227932532159141e-07
+  orientation:
+    x: 0.0022268780334843727
+    y: -0.005629480340657605
+    z: -5.568355206051486e-05
+    w: 0.9999816732643955
+```
+Pose with covariance topic echo:
+```
+$ ros2 topic echo /zed/zed_node/pose_with_covariance
+header:
+  stamp:
+    sec: 1735264018
+    nanosec: 899214223
+  frame_id: map
+pose:
+  pose:
+    position:
+      x: -5.217121462012392e-06
+      y: -1.0152986544623155e-06
+      z: 5.227932532159141e-07
+    orientation:
+      x: 0.0022268780334843727
+      y: -0.005629480340657605
+      z: -5.568355206051486e-05
+      w: 0.9999816732643955
+  covariance:
+  - 1.000000013351432e-10
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.000000013351432e-10
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.000000013351432e-10
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.000000013351432e-10
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.000000013351432e-10
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.000000013351432e-10
+```
 
