@@ -959,9 +959,100 @@ ros2 bag record -a --exclude "/topic_to_exclude" -o ros2_bag_name
 ```
 
 # Replay ZED ROS2 topics from a rosbag
-If you want to replay the rosbag (at default rate, r=1):
+If you want to replay the ros2 bag (at default rate, r=1):
 ```bash
 ros2 bag play zed_ros2_topics.bag -r 1
+```
+If you want to query the info of the ros2 bag:
+```
+$ ros2 bag info zed_rosbag_0.db3 
+
+Files:             zed_rosbag_0.db3
+Bag size:          400.3 MiB
+Storage id:        sqlite3
+Duration:          3.917s
+Start:             Dec 26 2024 21:26:04.386 (1735269964.386)
+End:               Dec 26 2024 21:26:08.304 (1735269968.304)
+Messages:          3226
+Topic information: Topic: /diagnostics | Type: diagnostic_msgs/msg/DiagnosticArray | Count: 4 | Serialization Format: cdr
+                   Topic: /tf | Type: tf2_msgs/msg/TFMessage | Count: 612 | Serialization Format: cdr
+                   Topic: /tf_static | Type: tf2_msgs/msg/TFMessage | Count: 79 | Serialization Format: cdr
+                   Topic: /zed/robot_description | Type: std_msgs/msg/String | Count: 1 | Serialization Format: cdr
+                   Topic: /zed/zed_node/atm_press | Type: sensor_msgs/msg/FluidPressure | Count: 96 | Serialization Format: cdr
+                   Topic: /zed/zed_node/depth/camera_info | Type: sensor_msgs/msg/CameraInfo | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/depth/depth_info | Type: zed_interfaces/msg/DepthInfoStamped | Count: 5 | Serialization Format: cdr
+                   Topic: /zed/zed_node/depth/depth_registered | Type: sensor_msgs/msg/Image | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/depth/depth_registered/compressedDepth | Type: sensor_msgs/msg/CompressedImage | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/depth/depth_registered/theora | Type: theora_image_transport/msg/Packet | Count: 3 | Serialization Format: cdr
+                   Topic: /zed/zed_node/disparity/disparity_image | Type: stereo_msgs/msg/DisparityImage | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/imu/data | Type: sensor_msgs/msg/Imu | Count: 593 | Serialization Format: cdr
+                   Topic: /zed/zed_node/imu/data_raw | Type: sensor_msgs/msg/Imu | Count: 595 | Serialization Format: cdr
+                   Topic: /zed/zed_node/imu/mag | Type: sensor_msgs/msg/MagneticField | Count: 190 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left/camera_info | Type: sensor_msgs/msg/CameraInfo | Count: 7 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left/image_rect_color | Type: sensor_msgs/msg/Image | Count: 7 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left/image_rect_color/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 7 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left/image_rect_color/theora | Type: theora_image_transport/msg/Packet | Count: 10 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left_cam_imu_transform | Type: geometry_msgs/msg/TransformStamped | Count: 599 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left_gray/camera_info | Type: sensor_msgs/msg/CameraInfo | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left_gray/image_rect_gray | Type: sensor_msgs/msg/Image | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left_gray/image_rect_gray/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left_gray/image_rect_gray/theora | Type: theora_image_transport/msg/Packet | Count: 9 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left_raw/camera_info | Type: sensor_msgs/msg/CameraInfo | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left_raw/image_raw_color | Type: sensor_msgs/msg/Image | Count: 7 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left_raw/image_raw_color/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 7 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left_raw/image_raw_color/theora | Type: theora_image_transport/msg/Packet | Count: 9 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left_raw_gray/camera_info | Type: sensor_msgs/msg/CameraInfo | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left_raw_gray/image_raw_gray | Type: sensor_msgs/msg/Image | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left_raw_gray/image_raw_gray/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/left_raw_gray/image_raw_gray/theora | Type: theora_image_transport/msg/Packet | Count: 9 | Serialization Format: cdr
+                   Topic: /zed/zed_node/odom | Type: nav_msgs/msg/Odometry | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/path_map | Type: nav_msgs/msg/Path | Count: 7 | Serialization Format: cdr
+                   Topic: /zed/zed_node/path_odom | Type: nav_msgs/msg/Path | Count: 7 | Serialization Format: cdr
+                   Topic: /zed/zed_node/point_cloud/cloud_registered | Type: sensor_msgs/msg/PointCloud2 | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/pose | Type: geometry_msgs/msg/PoseStamped | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/pose/status | Type: zed_interfaces/msg/PosTrackStatus | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/pose_with_covariance | Type: geometry_msgs/msg/PoseWithCovarianceStamped | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb/camera_info | Type: sensor_msgs/msg/CameraInfo | Count: 7 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb/image_rect_color | Type: sensor_msgs/msg/Image | Count: 7 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb/image_rect_color/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 7 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb/image_rect_color/theora | Type: theora_image_transport/msg/Packet | Count: 10 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb_gray/camera_info | Type: sensor_msgs/msg/CameraInfo | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb_gray/image_rect_gray | Type: sensor_msgs/msg/Image | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb_gray/image_rect_gray/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb_gray/image_rect_gray/theora | Type: theora_image_transport/msg/Packet | Count: 9 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb_raw/camera_info | Type: sensor_msgs/msg/CameraInfo | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb_raw/image_raw_color | Type: sensor_msgs/msg/Image | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb_raw/image_raw_color/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb_raw/image_raw_color/theora | Type: theora_image_transport/msg/Packet | Count: 9 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb_raw_gray/camera_info | Type: sensor_msgs/msg/CameraInfo | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb_raw_gray/image_raw_gray | Type: sensor_msgs/msg/Image | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb_raw_gray/image_raw_gray/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/rgb_raw_gray/image_raw_gray/theora | Type: theora_image_transport/msg/Packet | Count: 9 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right/camera_info | Type: sensor_msgs/msg/CameraInfo | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right/image_rect_color | Type: sensor_msgs/msg/Image | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right/image_rect_color/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right/image_rect_color/theora | Type: theora_image_transport/msg/Packet | Count: 9 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right_gray/camera_info | Type: sensor_msgs/msg/CameraInfo | Count: 5 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right_gray/image_rect_gray | Type: sensor_msgs/msg/Image | Count: 5 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right_gray/image_rect_gray/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 5 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right_gray/image_rect_gray/theora | Type: theora_image_transport/msg/Packet | Count: 8 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right_raw/camera_info | Type: sensor_msgs/msg/CameraInfo | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right_raw/image_raw_color | Type: sensor_msgs/msg/Image | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right_raw/image_raw_color/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right_raw/image_raw_color/theora | Type: theora_image_transport/msg/Packet | Count: 9 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right_raw_gray/camera_info | Type: sensor_msgs/msg/CameraInfo | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right_raw_gray/image_raw_gray | Type: sensor_msgs/msg/Image | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right_raw_gray/image_raw_gray/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/right_raw_gray/image_raw_gray/theora | Type: theora_image_transport/msg/Packet | Count: 9 | Serialization Format: cdr
+                   Topic: /zed/zed_node/stereo/image_rect_color | Type: sensor_msgs/msg/Image | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/stereo/image_rect_color/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 6 | Serialization Format: cdr
+                   Topic: /zed/zed_node/stereo/image_rect_color/theora | Type: theora_image_transport/msg/Packet | Count: 9 | Serialization Format: cdr
+                   Topic: /zed/zed_node/stereo_raw/image_raw_color | Type: sensor_msgs/msg/Image | Count: 5 | Serialization Format: cdr
+                   Topic: /zed/zed_node/stereo_raw/image_raw_color/compressed | Type: sensor_msgs/msg/CompressedImage | Count: 5 | Serialization Format: cdr
+                   Topic: /zed/zed_node/stereo_raw/image_raw_color/theora | Type: theora_image_transport/msg/Packet | Count: 8 | Serialization Format: cdr
+                   Topic: /zed/zed_node/temperature/imu | Type: sensor_msgs/msg/Temperature | Count: 4 | Serialization Format: cdr
+                   Topic: /zed/zed_node/temperature/left | Type: sensor_msgs/msg/Temperature | Count: 4 | Serialization Format: cdr
+                   Topic: /zed/zed_node/temperature/right | Type: sensor_msgs/msg/Temperature | Count: 4 | Serialization Format: cdr
 ```
 
 # Echo ZED ROS2 topics
