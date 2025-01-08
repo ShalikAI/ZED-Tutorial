@@ -808,11 +808,11 @@ step: 2560
 data: [61, 34, 41, 255, 61, 36, 43, 255, 63, 37, 43, 255, 64, 40, 43, 255...]
 ```
 
-The alpha channel in an image represents transparency or opacity for each pixel. While typical images in formats like JPEG / JPG use three color channels—red, green, and blue (RGB), PNG images with an alpha channel add a fourth channel to indicate how opaque or transparent each pixel is.
+The alpha channel in an image `bgra8` represents transparency or opacity for each pixel. While typical images in formats like JPEG / JPG use three color channels—red, green, and blue (RGB), PNG images with an alpha channel add a fourth channel to indicate how opaque or transparent each pixel is.
 
 R (Red): Intensity of red color in a pixel, G (Green): Intensity of green color in a pixel, B (Blue): Intensity of blue color in a pixel, and A (Alpha): Opacity or transparency level of a pixel. An alpha value of 0 makes a pixel fully transparent, 255 makes it fully opaque, and values in between create partial transparency for blending effects.
 
-When the ZED camera provides RGBA images, the alpha channel is typically always fully opaque (255), meaning the images are completely visible without any transparency.
+When the ZED camera provides `bgra8` encoded images, the alpha channel is typically always fully opaque (255), meaning the images are completely visible without any transparency.
 
 Left camera info topic echo:
 ```
@@ -1991,11 +1991,11 @@ data:
 - 255
 ```
 
-The alpha channel in an image represents transparency or opacity for each pixel. While typical images in formats like JPEG / JPG use three color channels—red, green, and blue (RGB), PNG images with an alpha channel add a fourth channel to indicate how opaque or transparent each pixel is.
+The alpha channel in an image `bgra8` represents transparency or opacity for each pixel. While typical images in formats like JPEG / JPG use three color channels—red, green, and blue (RGB), PNG images with an alpha channel add a fourth channel to indicate how opaque or transparent each pixel is.
 
 R (Red): Intensity of red color in a pixel, G (Green): Intensity of green color in a pixel, B (Blue): Intensity of blue color in a pixel, and A (Alpha): Opacity or transparency level of a pixel. An alpha value of 0 makes a pixel fully transparent, 255 makes it fully opaque, and values in between create partial transparency for blending effects.
 
-When the ZED camera provides RGBA images, the alpha channel is typically always fully opaque (255), meaning the images are completely visible without any transparency.
+When the ZED camera provides `bgra8` encoded images, the alpha channel is typically always fully opaque (255), meaning the images are completely visible without any transparency.
 
 Left camera info topic:
 ```
