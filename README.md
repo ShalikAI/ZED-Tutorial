@@ -736,6 +736,8 @@ step: 2560
 data: [255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255,..]
 ```
 
+In ROS1 for zed cameras, 32 bit float in meters and 16 bit unsigned int in millimeters are used and can be launched. You have to change the parameters inside `common.yaml` file of `params` folder. Specially, `openni_depth_mode` should be `false` for `32bit float` meter units (32FC1) and should be set to `true` for 16bit uchar (mono16) millimeter units. 
+
 Depth camera info topic echo:
 ```
 $ rostopic echo /zed2/zed_node/depth/camera_info
@@ -805,6 +807,12 @@ is_bigendian: 0
 step: 2560
 data: [61, 34, 41, 255, 61, 36, 43, 255, 63, 37, 43, 255, 64, 40, 43, 255...]
 ```
+
+The alpha channel in an image represents transparency or opacity for each pixel. While typical images in formats like JPEG / JPG use three color channels—red, green, and blue (RGB), PNG images with an alpha channel add a fourth channel to indicate how opaque or transparent each pixel is.
+
+R (Red): Intensity of red color in a pixel, G (Green): Intensity of green color in a pixel, B (Blue): Intensity of blue color in a pixel, and A (Alpha): Opacity or transparency level of a pixel. An alpha value of 0 makes a pixel fully transparent, 255 makes it fully opaque, and values in between create partial transparency for blending effects.
+
+When the ZED camera provides RGBA images, the alpha channel is typically always fully opaque (255), meaning the images are completely visible without any transparency.
 
 Left camera info topic echo:
 ```
@@ -1829,6 +1837,8 @@ data:
 - 127
 ```
 
+In ROS2 for zed cameras, 32 bit float in meters and 16 bit unsigned int in millimeters are used and can be launched. You have to change the parameters inside `common.yaml` file of `params` folder. Specially, `openni_depth_mode` should be `false` for `32bit float` meter units (32FC1) and should be set to `true` for 16bit uchar (mono16) millimeter units. 
+
 Depth camera info topic echo:
 ```
 $ ros2 topic echo /zed/zed_node/depth/camera_info
@@ -1980,6 +1990,12 @@ data:
 - 78
 - 255
 ```
+
+The alpha channel in an image represents transparency or opacity for each pixel. While typical images in formats like JPEG / JPG use three color channels—red, green, and blue (RGB), PNG images with an alpha channel add a fourth channel to indicate how opaque or transparent each pixel is.
+
+R (Red): Intensity of red color in a pixel, G (Green): Intensity of green color in a pixel, B (Blue): Intensity of blue color in a pixel, and A (Alpha): Opacity or transparency level of a pixel. An alpha value of 0 makes a pixel fully transparent, 255 makes it fully opaque, and values in between create partial transparency for blending effects.
+
+When the ZED camera provides RGBA images, the alpha channel is typically always fully opaque (255), meaning the images are completely visible without any transparency.
 
 Left camera info topic:
 ```
