@@ -719,7 +719,7 @@ topics:      /diagnostics                                                       
 ```
 ### Echo ZED ROS1 topics
 
-Depth topic echo: 
+Depth topic echo (32 bit): 
 ```
 $ rostopic echo /zed2/zed_node/depth/depth_registered
 header: 
@@ -734,6 +734,23 @@ encoding: "32FC1"
 is_bigendian: 0
 step: 2560
 data: [255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255,..]
+```
+
+Depth topic echo (16 bit): 
+```
+$ rostopic echo /zedm/zed_node/depth/depth_registered
+header: 
+  seq: 0
+  stamp: 
+    secs: 1737399426
+    nsecs: 106011058
+  frame_id: "zedm_left_camera_optical_frame"
+height: 1080
+width: 1920
+encoding: "16UC1"
+is_bigendian: 0
+step: 3840
+data: [238, 7, 236, 7, 232, 7, ...]
 ```
 
 In ROS1 for zed cameras, 32 bit float in meters and 16 bit unsigned int in millimeters are used and can be launched. You have to change the parameters inside `common.yaml` file of `params` folder. Specially, `openni_depth_mode` should be `false` for `32bit float` meter units (32FC1) and should be set to `true` for 16bit uchar (mono16) millimeter units. 
@@ -1834,7 +1851,7 @@ Topic information: Topic: /diagnostics | Type: diagnostic_msgs/msg/DiagnosticArr
 ```
 
 # Echo ZED ROS2 topics
-Depth topic echo: 
+Depth topic echo (32 bit): 
 ```
 $ ros2 topic echo /zed/zed_node/depth/depth_registered
 header:
@@ -1852,6 +1869,35 @@ data:
 - 255
 - 255
 - 127
+```
+
+Depth topic echo (16 bit):
+```
+$ ros2 topic echo /zed/zed_node/depth/depth_registered
+header:
+  stamp:
+    sec: 1737397460
+    nanosec: 165392093
+  frame_id: zed_left_camera_optical_frame
+height: 1080
+width: 1920
+encoding: mono16
+is_bigendian: 0
+step: 3840
+data:
+- 0
+- 0
+- 0
+- 0
+- 134
+- 1
+- 134
+- 1
+- 134
+- 1
+- 134
+- 1
+- 134
 ```
 
 In ROS2 for zed cameras, 32 bit float in meters and 16 bit unsigned int in millimeters are used and can be launched. You have to change the parameters inside `common.yaml` file of `params` folder. Specially, `openni_depth_mode` should be `false` for `32bit float` meter units (32FC1) and should be set to `true` for 16bit uchar (mono16) millimeter units. 
