@@ -883,6 +883,23 @@ roi:
   do_rectify: False
 ```
 
+Left camera monocular topic echo:
+```
+$ rostopic echo /zedm/zed_node/left/image_rect_gray
+header: 
+  seq: 5250
+  stamp: 
+    secs: 1737392916
+    nsecs: 404275541
+  frame_id: "zedm_left_camera_optical_frame"
+height: 1080
+width: 1920
+encoding: "mono8"
+is_bigendian: 0
+step: 1920
+data: [49, 49, 49, 50, ...]
+```
+
 Right camera topic echo:
 ```
 $ rostopic echo /zed2/zed_node/right/image_rect_color
@@ -2145,6 +2162,26 @@ roi:
   height: 0
   width: 0
   do_rectify: false
+```
+
+Left camera monocular topic echo:
+```
+$ ros2 topic echo /zed/zed_node/left_gray/image_rect_gray
+header:
+  stamp:
+    sec: 1737393862
+    nanosec: 787813064
+  frame_id: zed_left_camera_optical_frame
+height: 1080
+width: 1920
+encoding: mono8
+is_bigendian: 0
+step: 1920
+data:
+- 18
+- 22
+- 20
+- 21
 ```
 
 Right camera topic echo:
